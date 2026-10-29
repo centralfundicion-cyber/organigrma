@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Consulta el organigrama institucional, versión V07.">
+  <title>Organigrama Institucional | V07</title>
+  <style>
+    :root { --navy:#173b70; --blue:#2456a6; --ink:#1f2937; --muted:#667085; --line:#e5e7eb; --bg:#f4f7fb; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:Arial, Helvetica, sans-serif; color:var(--ink); background:var(--bg); }
+    header { background:linear-gradient(120deg,var(--navy),var(--blue)); color:white; padding:28px 20px; }
+    .head-inner, main, footer { width:min(1500px, calc(100% - 32px)); margin:0 auto; }
+    .eyebrow { text-transform:uppercase; letter-spacing:.13em; font-size:.75rem; opacity:.85; font-weight:700; }
+    h1 { margin:8px 0 8px; font-size:clamp(1.5rem,3vw,2.4rem); }
+    .subtitle { margin:0; color:#e6eefb; line-height:1.5; }
+    main { padding:22px 0 34px; }
+    .intro { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:14px; margin-bottom:16px; }
+    .intro h2 { font-size:1.15rem; margin:0 0 5px; }
+    .intro p { margin:0; color:var(--muted); line-height:1.5; }
+    .actions { display:flex; flex-wrap:wrap; gap:8px; }
+    button, .button { border:0; border-radius:9px; padding:11px 15px; font-weight:700; font-size:.92rem; cursor:pointer; text-decoration:none; display:inline-flex; align-items:center; justify-content:center; gap:8px; }
+    .primary { background:var(--blue); color:white; }
+    .secondary { background:white; color:var(--navy); border:1px solid #cbd5e1; }
+    .viewer { background:white; border:1px solid var(--line); border-radius:14px; box-shadow:0 8px 28px rgba(20,40,80,.08); overflow:hidden; }
+    .viewer-bar { padding:12px 16px; border-bottom:1px solid var(--line); display:flex; justify-content:space-between; align-items:center; gap:12px; color:var(--muted); font-size:.88rem; }
+    .scroll-note { white-space:normal; }
+    .image-wrap { padding:12px; overflow:auto; max-height:72vh; background:#fff; }
+    #org-image { display:block; width:100%; height:auto; min-width:900px; margin:0 auto; }
+    .viewer:fullscreen { background:white; padding:10px; }
+    .viewer:fullscreen .image-wrap { max-height:calc(100vh - 65px); }
+    .viewer:fullscreen #org-image { min-width:1100px; width:100%; }
+    .help { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; margin-top:16px; }
+    .help-card { background:white; border:1px solid var(--line); border-radius:12px; padding:16px; }
+    .help-card strong { display:block; margin-bottom:6px; }
+    .help-card p { margin:0; color:var(--muted); font-size:.92rem; line-height:1.5; }
+    footer { color:var(--muted); font-size:.82rem; padding:0 0 22px; text-align:center; }
+    @media (max-width:720px) {
+      header { padding:23px 16px; }
+      .head-inner, main, footer { width:calc(100% - 22px); }
+      .intro { align-items:stretch; }
+      .actions { width:100%; }
+      .actions > * { flex:1; }
+      .image-wrap { padding:7px; max-height:65vh; }
+      #org-image { min-width:1050px; }
+      .help { grid-template-columns:1fr; }
+      .viewer-bar { align-items:flex-start; flex-direction:column; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="head-inner">
+      <div class="eyebrow">Documento institucional</div>
+      <h1>Organigrama Institucional</h1>
+      <p class="subtitle">Estructura organizacional · Código D-RHU-001 · Versión V07</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="intro">
+      <div>
+        <h2>Estructura organizacional</h2>
+        <p>Consulta las áreas, puestos y líneas de dependencia. Amplía la imagen para leer los detalles.</p>
+      </div>
+      <div class="actions">
+        <button class="primary" id="fullscreen-btn" type="button">⛶ Ver en pantalla completa</button>
+        <a class="button secondary" href="Organigrama_V07.pdf" target="_blank" rel="noopener">▤ Abrir PDF</a>
+      </div>
+    </section>
+
+    <section class="viewer" id="viewer" aria-label="Visor del organigrama">
+      <div class="viewer-bar">
+        <span><strong>Organigrama V07</strong></span>
+        <span class="scroll-note">En celular, desliza horizontalmente o amplía con los dedos.</span>
+      </div>
+      <div class="image-wrap">
+        <img id="org-image" src="organigrama.svg" alt="Organigrama institucional completo, versión V07">
+      </div>
+    </section>
+
+    <section class="help" aria-label="Indicaciones">
+      <div class="help-card"><strong>🔎 Para leer los cargos</strong><p>Usa el zoom del navegador o abre el organigrama en pantalla completa.</p></div>
+      <div class="help-card"><strong>📱 Desde el celular</strong><p>Escanea el QR que dirija a la dirección pública de esta página y amplía la imagen con los dedos.</p></div>
+      <div class="help-card"><strong>🖨️ Para imprimir</strong><p>Abre el PDF y utiliza la opción de impresión para revisar el tamaño de página y la orientación.</p></div>
+    </section>
+  </main>
+
+  <footer>Organigrama Institucional · D-RHU-001 · V07</footer>
+  <script>
+    const viewer = document.getElementById('viewer');
+    const btn = document.getElementById('fullscreen-btn');
+    btn.addEventListener('click', async () => {
+      try {
+        if (!document.fullscreenElement) {
+          await viewer.requestFullscreen();
+          btn.textContent = '✕ Salir de pantalla completa';
+        } else {
+          await document.exitFullscreen();
+          btn.textContent = '⛶ Ver en pantalla completa';
+        }
+      } catch (e) {
+        alert('La pantalla completa no está disponible en este navegador. Puedes ampliar la página con el zoom.');
+      }
+    });
+    document.addEventListener('fullscreenchange', () => {
+      if (!document.fullscreenElement) btn.textContent = '⛶ Ver en pantalla completa';
+    });
+  </script>
+</body>
+</html>
