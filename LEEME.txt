@@ -1,16 +1,1 @@
-SITIO WEB: ORGANIGRAMA INSTITUCIONAL V07
-
-Contenido:
-- index.html: página principal del sitio
-- organigrama.svg: organigrama vectorial para ampliar sin perder nitidez
-- Organigrama_V07.pdf: versión PDF (si está disponible)
-
-PARA PROBAR EN TU COMPUTADORA:
-1. Descomprime el ZIP.
-2. Abre index.html con Chrome o Edge.
-3. Comprueba la imagen y los botones.
-
-PARA PUBLICAR:
-Sube los archivos conservando los tres en la misma carpeta a un alojamiento web estático.
-Luego crea un QR con la URL pública de index.html.
-Este paquete no publica automáticamente el sitio en Google Sites ni configura permisos de la empresa.
+SITIO WEB: ORGANIGRAMA INSTITUCIONAL V07\n\nMantén estos archivos juntos en la raíz del sitio: index.html, organigrama.svg, Organigrama_V07.pdf y logo-fundicion-central.png.\nPara actualizar GitHub Pages, sube los archivos actualizados a la raíz del repositorio.\n

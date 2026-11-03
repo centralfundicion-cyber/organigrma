@@ -1,111 +1,703 @@
+
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Consulta el organigrama institucional, versión V07.">
-  <title>Organigrama Institucional | V07</title>
-  <style>
-    :root { --navy:#173b70; --blue:#2456a6; --ink:#1f2937; --muted:#667085; --line:#e5e7eb; --bg:#f4f7fb; }
-    * { box-sizing:border-box; }
-    body { margin:0; font-family:Arial, Helvetica, sans-serif; color:var(--ink); background:var(--bg); }
-    header { background:linear-gradient(120deg,var(--navy),var(--blue)); color:white; padding:28px 20px; }
-    .head-inner, main, footer { width:min(1500px, calc(100% - 32px)); margin:0 auto; }
-    .eyebrow { text-transform:uppercase; letter-spacing:.13em; font-size:.75rem; opacity:.85; font-weight:700; }
-    h1 { margin:8px 0 8px; font-size:clamp(1.5rem,3vw,2.4rem); }
-    .subtitle { margin:0; color:#e6eefb; line-height:1.5; }
-    main { padding:22px 0 34px; }
-    .intro { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:14px; margin-bottom:16px; }
-    .intro h2 { font-size:1.15rem; margin:0 0 5px; }
-    .intro p { margin:0; color:var(--muted); line-height:1.5; }
-    .actions { display:flex; flex-wrap:wrap; gap:8px; }
-    button, .button { border:0; border-radius:9px; padding:11px 15px; font-weight:700; font-size:.92rem; cursor:pointer; text-decoration:none; display:inline-flex; align-items:center; justify-content:center; gap:8px; }
-    .primary { background:var(--blue); color:white; }
-    .secondary { background:white; color:var(--navy); border:1px solid #cbd5e1; }
-    .viewer { background:white; border:1px solid var(--line); border-radius:14px; box-shadow:0 8px 28px rgba(20,40,80,.08); overflow:hidden; }
-    .viewer-bar { padding:12px 16px; border-bottom:1px solid var(--line); display:flex; justify-content:space-between; align-items:center; gap:12px; color:var(--muted); font-size:.88rem; }
-    .scroll-note { white-space:normal; }
-    .image-wrap { padding:12px; overflow:auto; max-height:72vh; background:#fff; }
-    #org-image { display:block; width:100%; height:auto; min-width:900px; margin:0 auto; }
-    .viewer:fullscreen { background:white; padding:10px; }
-    .viewer:fullscreen .image-wrap { max-height:calc(100vh - 65px); }
-    .viewer:fullscreen #org-image { min-width:1100px; width:100%; }
-    .help { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; margin-top:16px; }
-    .help-card { background:white; border:1px solid var(--line); border-radius:12px; padding:16px; }
-    .help-card strong { display:block; margin-bottom:6px; }
-    .help-card p { margin:0; color:var(--muted); font-size:.92rem; line-height:1.5; }
-    footer { color:var(--muted); font-size:.82rem; padding:0 0 22px; text-align:center; }
-    @media (max-width:720px) {
-      header { padding:23px 16px; }
-      .head-inner, main, footer { width:calc(100% - 22px); }
-      .intro { align-items:stretch; }
-      .actions { width:100%; }
-      .actions > * { flex:1; }
-      .image-wrap { padding:7px; max-height:65vh; }
-      #org-image { min-width:1050px; }
-      .help { grid-template-columns:1fr; }
-      .viewer-bar { align-items:flex-start; flex-direction:column; }
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <div class="head-inner">
-      <div class="eyebrow">Documento institucional</div>
-      <h1>Organigrama Institucional</h1>
-      <p class="subtitle">Estructura organizacional · Código D-RHU-001 · Versión V07</p>
-    </div>
-  </header>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="description" content="Organigrama institucional de Fundición Central, código D-RHU-001, versión V07.">
+    <meta name="theme-color" content="#123a78">
+    <title>Estructura organizacional | Fundición Central</title>
 
-  <main>
+    <style>
+        :root {
+            --navy: #123a78;
+            --blue: #0752b8;
+            --gold: #f8c400;
+            --ink: #182538;
+            --muted: #66758a;
+            --line: #dfe6ef;
+            --bg: #f3f6fb;
+            --shadow: 0 12px 34px rgba(25, 59, 109, .10);
+        }
+
+        * { box-sizing: border-box; }
+        html { min-height: 100%; }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            color: var(--ink);
+            background: var(--bg);
+        }
+
+        header {
+            color: #fff;
+            background: linear-gradient(120deg, #102e61, #174b96 62%, #0d3674);
+            border-bottom: 4px solid var(--gold);
+        }
+
+        .head-inner, main, footer {
+            width: min(1800px, calc(100% - 48px));
+            margin: 0 auto;
+        }
+
+        .head-inner {
+            min-height: 118px;
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            padding: 18px 0;
+        }
+
+        .brand {
+            flex: 0 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 16px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px #061b3c33;
+        }
+
+        .brand img {
+            display: block;
+            width: 245px;
+            max-width: 27vw;
+            height: auto;
+        }
+
+        .heading {
+            padding-left: 28px;
+            border-left: 1px solid #ffffff50;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: clamp(1.55rem, 3vw, 2.5rem);
+            line-height: 1.12;
+            letter-spacing: -.025em;
+        }
+
+        main { padding: 24px 0 30px; }
+
+        .intro {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+
+        .actions, .tools {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px;
+        }
+
+        button, .button {
+            min-height: 42px;
+            padding: 10px 15px;
+            border: 1px solid transparent;
+            border-radius: 10px;
+            font: 700 .9rem Arial, Helvetica, sans-serif;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+            transition: background .18s ease, border-color .18s ease, transform .18s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        button:active, .button:active { transform: scale(.98); }
+
+        button:focus-visible, .button:focus-visible {
+            outline: 3px solid #f8c40088;
+            outline-offset: 2px;
+        }
+
+        .primary {
+            background: var(--blue);
+            color: #fff;
+        }
+
+        .primary:hover { background: #06459b; }
+
+        .secondary, .zoom-btn {
+            color: var(--navy);
+            background: #fff;
+            border-color: #cbd7e7;
+        }
+
+        .secondary:hover, .zoom-btn:hover {
+            background: #edf4ff;
+        }
+
+        .viewer {
+            overflow: hidden;
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+        }
+
+        .viewer-bar {
+            min-height: 58px;
+            padding: 9px 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            background: #fbfcfe;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .viewer-hint {
+            color: var(--muted);
+            font-size: .8rem;
+        }
+
+        .tools { justify-content: flex-end; }
+
+        .zoom-btn {
+            min-width: 40px;
+            min-height: 38px;
+            padding: 7px 12px;
+        }
+
+        #zoom-level {
+            min-width: 56px;
+            color: var(--muted);
+            font-size: .84rem;
+            text-align: center;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .image-wrap {
+            position: relative;
+            width: 100%;
+            height: min(76vh, 900px);
+            min-height: 420px;
+            overflow: auto;
+            padding: 14px;
+            background: #fff;
+            cursor: grab;
+            overscroll-behavior: contain;
+            scrollbar-width: thin;
+            scrollbar-color: #aebdd0 #f0f3f8;
+            touch-action: none;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .image-wrap.dragging { cursor: grabbing; }
+
+        #org-image {
+            display: block;
+            width: 100%;
+            max-width: none;
+            height: auto;
+            margin: 0 auto;
+            pointer-events: none;
+            -webkit-user-drag: none;
+        }
+
+        .viewer:fullscreen {
+            width: 100%;
+            height: 100%;
+            padding: 8px;
+            border: 0;
+            border-radius: 0;
+            background: #fff;
+        }
+
+        .viewer:fullscreen .image-wrap {
+            height: calc(100vh - 78px);
+            max-height: none;
+        }
+
+        footer {
+            padding: 0 0 22px;
+            color: #7a8799;
+            font-size: .8rem;
+            text-align: center;
+        }
+
+        @media (min-width: 1500px) {
+            .image-wrap { height: 79vh; }
+        }
+
+        /* Adaptación para celulares */
+        @media (max-width: 760px) {
+            .head-inner, main, footer {
+                width: calc(100% - 24px);
+            }
+
+            .head-inner {
+                min-height: auto;
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 13px;
+                padding: 16px 0;
+            }
+
+            .brand {
+                padding: 8px 12px;
+                border-radius: 10px;
+            }
+
+            .brand img {
+                width: 190px;
+                max-width: 66vw;
+            }
+
+            .heading {
+                width: 100%;
+                padding: 12px 0 0;
+                border-left: 0;
+                border-top: 1px solid #ffffff50;
+            }
+
+            h1 { font-size: clamp(1.35rem, 6vw, 1.8rem); }
+
+            main { padding: 16px 0 22px; }
+
+            .intro { justify-content: stretch; }
+            .actions { width: 100%; }
+            .actions > * { flex: 1 1 0; }
+
+            button, .button {
+                min-height: 44px;
+                padding: 10px 11px;
+                font-size: .82rem;
+            }
+
+            .viewer { border-radius: 12px; }
+
+            .viewer-bar {
+                padding: 9px;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 6px;
+            }
+
+            .viewer-hint { text-align: center; }
+
+            .tools {
+                width: 100%;
+                justify-content: center;
+                gap: 7px;
+            }
+
+            .zoom-btn { min-height: 40px; }
+            #zoom-level { min-width: 48px; }
+
+            .image-wrap {
+                height: 66vh;
+                min-height: 360px;
+                padding: 8px;
+            }
+
+            #org-image { width: max(100%, 1000px); }
+
+            .viewer:fullscreen { padding: 4px; }
+
+            .viewer:fullscreen .image-wrap {
+                height: calc(100vh - 112px);
+                min-height: 0;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .actions { flex-direction: column; }
+            .actions > * { width: 100%; }
+            .image-wrap { height: 62vh; }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="head-inner">
+        <div class="brand">
+            <img src="logo-fundicion-central.png" alt="Fundición Central">
+        </div>
+
+        <div class="heading">
+            <h1>Estructura organizacional</h1>
+        </div>
+    </div>
+</header>
+
+<main>
     <section class="intro">
-      <div>
-        <h2>Estructura organizacional</h2>
-        <p>Consulta las áreas, puestos y líneas de dependencia. Amplía la imagen para leer los detalles.</p>
-      </div>
-      <div class="actions">
-        <button class="primary" id="fullscreen-btn" type="button">⛶ Ver en pantalla completa</button>
-        <a class="button secondary" href="Organigrama_V07.pdf" target="_blank" rel="noopener">▤ Abrir PDF</a>
-      </div>
+        <div class="actions">
+            <button class="primary" id="fullscreen-btn" type="button">
+                ⛶ Pantalla completa
+            </button>
+
+            <a class="button secondary"
+               href="Organigrama_V07.pdf"
+               target="_blank"
+               rel="noopener">
+                ↗ Abrir PDF
+            </a>
+        </div>
     </section>
 
     <section class="viewer" id="viewer" aria-label="Visor del organigrama">
-      <div class="viewer-bar">
-        <span><strong>Organigrama V07</strong></span>
-        <span class="scroll-note">En celular, desliza horizontalmente o amplía con los dedos.</span>
-      </div>
-      <div class="image-wrap">
-        <img id="org-image" src="organigrama.svg" alt="Organigrama institucional completo, versión V07">
-      </div>
-    </section>
+        <div class="viewer-bar">
+            <span class="viewer-hint">
+                Arrastra para desplazarte · Usa Ctrl + rueda para ampliar
+            </span>
 
-    <section class="help" aria-label="Indicaciones">
-      <div class="help-card"><strong>🔎 Para leer los cargos</strong><p>Usa el zoom del navegador o abre el organigrama en pantalla completa.</p></div>
-      <div class="help-card"><strong>📱 Desde el celular</strong><p>Escanea el QR que dirija a la dirección pública de esta página y amplía la imagen con los dedos.</p></div>
-      <div class="help-card"><strong>🖨️ Para imprimir</strong><p>Abre el PDF y utiliza la opción de impresión para revisar el tamaño de página y la orientación.</p></div>
-    </section>
-  </main>
+            <div class="tools" aria-label="Controles de ampliación">
+                <button class="zoom-btn" id="zoom-out"
+                        type="button" aria-label="Alejar">−</button>
 
-  <footer>Organigrama Institucional · D-RHU-001 · V07</footer>
-  <script>
+                <span id="zoom-level" aria-live="polite">100%</span>
+
+                <button class="zoom-btn" id="zoom-in"
+                        type="button" aria-label="Acercar">+</button>
+
+                <button class="zoom-btn" id="zoom-reset" type="button">
+                    Centrar / ajustar
+                </button>
+            </div>
+        </div>
+
+        <div class="image-wrap" id="image-wrap">
+            <img id="org-image"
+                 src="organigrama.svg"
+                 alt="Organigrama institucional completo de Fundición Central, versión V07"
+                 draggable="false">
+        </div>
+    </section>
+</main>
+
+<footer>Fundición Central · Organigrama Institucional</footer>
+
+<script>
     const viewer = document.getElementById('viewer');
-    const btn = document.getElementById('fullscreen-btn');
-    btn.addEventListener('click', async () => {
-      try {
-        if (!document.fullscreenElement) {
-          await viewer.requestFullscreen();
-          btn.textContent = '✕ Salir de pantalla completa';
-        } else {
-          await document.exitFullscreen();
-          btn.textContent = '⛶ Ver en pantalla completa';
+    const image = document.getElementById('org-image');
+    const imageWrap = document.getElementById('image-wrap');
+    const fullscreenBtn = document.getElementById('fullscreen-btn');
+    const zoomLevel = document.getElementById('zoom-level');
+
+    // El zoom nunca podrá bajar del 100%.
+    const MIN_ZOOM = 100;
+    const MAX_ZOOM = 350;
+    const ZOOM_STEP = 20;
+
+    let zoom = 100;
+    let baseWidth = 0;
+    let drag = null;
+    let pinch = null;
+
+    // Estado independiente de la ventana principal.
+    let mainViewSnapshot = null;
+    let fullscreenActive = false;
+    let lastFullscreenExitAt = 0;
+
+    function calculateBaseWidth() {
+        const available = Math.max(280, imageWrap.clientWidth - 28);
+        const mobile = window.matchMedia('(max-width: 760px)').matches;
+
+        return mobile ? Math.max(available, 1000) : available;
+    }
+
+    function setZoom(value, anchorX = null, anchorY = null) {
+        const oldWidth = image.getBoundingClientRect().width;
+        const oldHeight = image.getBoundingClientRect().height;
+        const oldZoom = zoom;
+
+        // Limita el zoom entre 100% y 350%.
+        zoom = Math.max(
+            MIN_ZOOM,
+            Math.min(MAX_ZOOM, Math.round(value))
+        );
+
+        baseWidth = calculateBaseWidth();
+
+        const pointX = anchorX ?? imageWrap.clientWidth / 2;
+        const pointY = anchorY ?? imageWrap.clientHeight / 2;
+
+        const contentX =
+            (imageWrap.scrollLeft + pointX) / (oldWidth || baseWidth);
+
+        const contentY =
+            (imageWrap.scrollTop + pointY) / (oldHeight || 1);
+
+        image.style.width = (baseWidth * zoom / 100) + 'px';
+        zoomLevel.textContent = zoom + '%';
+
+        requestAnimationFrame(() => {
+            const newWidth = image.getBoundingClientRect().width;
+            const newHeight = image.getBoundingClientRect().height;
+
+            imageWrap.scrollLeft = contentX * newWidth - pointX;
+            imageWrap.scrollTop = contentY * newHeight - pointY;
+        });
+
+        return oldZoom;
+    }
+
+    function resetView() {
+        zoom = 100;
+        baseWidth = calculateBaseWidth();
+
+        image.style.width = baseWidth + 'px';
+        zoomLevel.textContent = '100%';
+
+        requestAnimationFrame(() => {
+            imageWrap.scrollTo({
+                left: 0,
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+
+    // Botones de zoom.
+    document.getElementById('zoom-in').addEventListener(
+        'click',
+        () => setZoom(zoom + ZOOM_STEP)
+    );
+
+    document.getElementById('zoom-out').addEventListener(
+        'click',
+        () => setZoom(zoom - ZOOM_STEP)
+    );
+
+    document.getElementById('zoom-reset').addEventListener(
+        'click',
+        resetView
+    );
+
+    // Arrastrar con mouse en PC.
+    imageWrap.addEventListener('pointerdown', event => {
+        if (event.pointerType !== 'mouse' || event.button !== 0) return;
+
+        drag = {
+            x: event.clientX,
+            y: event.clientY,
+            left: imageWrap.scrollLeft,
+            top: imageWrap.scrollTop
+        };
+
+        imageWrap.classList.add('dragging');
+        imageWrap.setPointerCapture(event.pointerId);
+    });
+
+    imageWrap.addEventListener('pointermove', event => {
+        if (!drag || event.pointerType !== 'mouse') return;
+
+        imageWrap.scrollLeft =
+            drag.left - (event.clientX - drag.x);
+
+        imageWrap.scrollTop =
+            drag.top - (event.clientY - drag.y);
+    });
+
+    function stopDrag() {
+        drag = null;
+        imageWrap.classList.remove('dragging');
+    }
+
+    imageWrap.addEventListener('pointerup', stopDrag);
+    imageWrap.addEventListener('pointercancel', stopDrag);
+    imageWrap.addEventListener('lostpointercapture', stopDrag);
+
+    // Zoom con Ctrl + rueda del mouse.
+    imageWrap.addEventListener('wheel', event => {
+        if (!event.ctrlKey && !event.metaKey) return;
+
+        event.preventDefault();
+
+        const rect = imageWrap.getBoundingClientRect();
+        const x = event.clientX - rect.left;
+        const y = event.clientY - rect.top;
+
+        setZoom(
+            zoom + (event.deltaY < 0 ? 10 : -10),
+            x,
+            y
+        );
+    }, { passive: false });
+
+    // Gestos táctiles: un dedo desplaza; dos dedos amplían o reducen.
+    function touchDistance(touches) {
+        const dx = touches[0].clientX - touches[1].clientX;
+        const dy = touches[0].clientY - touches[1].clientY;
+
+        return Math.hypot(dx, dy);
+    }
+
+    function touchMidpoint(touches) {
+        const rect = imageWrap.getBoundingClientRect();
+
+        return {
+            x: (touches[0].clientX + touches[1].clientX) / 2 - rect.left,
+            y: (touches[0].clientY + touches[1].clientY) / 2 - rect.top
+        };
+    }
+
+    imageWrap.addEventListener('touchstart', event => {
+        if (event.touches.length === 1) {
+            const touch = event.touches[0];
+
+            drag = {
+                x: touch.clientX,
+                y: touch.clientY,
+                left: imageWrap.scrollLeft,
+                top: imageWrap.scrollTop,
+                touch: true
+            };
+
+            pinch = null;
+
+        } else if (event.touches.length === 2) {
+            event.preventDefault();
+
+            drag = null;
+
+            pinch = {
+                distance: touchDistance(event.touches),
+                zoom: zoom
+            };
         }
-      } catch (e) {
-        alert('La pantalla completa no está disponible en este navegador. Puedes ampliar la página con el zoom.');
-      }
+    }, { passive: false });
+
+    imageWrap.addEventListener('touchmove', event => {
+        if (event.touches.length === 1 && drag?.touch) {
+            event.preventDefault();
+
+            const touch = event.touches[0];
+
+            imageWrap.scrollLeft =
+                drag.left - (touch.clientX - drag.x);
+
+            imageWrap.scrollTop =
+                drag.top - (touch.clientY - drag.y);
+
+        } else if (event.touches.length === 2 && pinch) {
+            event.preventDefault();
+
+            const distance = touchDistance(event.touches);
+            const midpoint = touchMidpoint(event.touches);
+            const scale = distance / pinch.distance;
+
+            setZoom(
+                pinch.zoom * scale,
+                midpoint.x,
+                midpoint.y
+            );
+        }
+    }, { passive: false });
+
+    function endTouch() {
+        drag = null;
+        pinch = null;
+    }
+
+    imageWrap.addEventListener('touchend', endTouch);
+    imageWrap.addEventListener('touchcancel', endTouch);
+
+    // Pantalla completa: guardar el estado de la ventana principal.
+    fullscreenBtn.addEventListener('click', async () => {
+        try {
+            if (!document.fullscreenElement) {
+                mainViewSnapshot = {
+                    zoom: zoom,
+                    width: image.style.width,
+                    scrollLeft: imageWrap.scrollLeft,
+                    scrollTop: imageWrap.scrollTop
+                };
+
+                await viewer.requestFullscreen();
+
+            } else {
+                await document.exitFullscreen();
+            }
+
+        } catch (error) {
+            mainViewSnapshot = null;
+
+            alert(
+                'La pantalla completa no está disponible en este navegador.'
+            );
+        }
     });
+
+    // Detectar entrada y salida de pantalla completa.
     document.addEventListener('fullscreenchange', () => {
-      if (!document.fullscreenElement) btn.textContent = '⛶ Ver en pantalla completa';
+        const isFullscreen = Boolean(document.fullscreenElement);
+
+        fullscreenBtn.textContent = isFullscreen
+            ? '✕ Salir de pantalla completa'
+            : '⛶ Pantalla completa';
+
+        if (isFullscreen) {
+            fullscreenActive = true;
+
+            requestAnimationFrame(() => setZoom(zoom));
+
+        } else {
+            fullscreenActive = false;
+            lastFullscreenExitAt = Date.now();
+
+            if (mainViewSnapshot) {
+                const saved = mainViewSnapshot;
+                mainViewSnapshot = null;
+
+                requestAnimationFrame(() => {
+                    zoom = saved.zoom;
+                    image.style.width = saved.width;
+                    zoomLevel.textContent = saved.zoom + '%';
+
+                    requestAnimationFrame(() => {
+                        imageWrap.scrollLeft = saved.scrollLeft;
+                        imageWrap.scrollTop = saved.scrollTop;
+                    });
+                });
+            }
+        }
     });
-  </script>
+
+    // Evitar que resize sobrescriba el estado de la ventana principal.
+    let resizeTimer;
+
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+
+        if (
+            !document.fullscreenElement &&
+            Date.now() - lastFullscreenExitAt < 700
+        ) {
+            return;
+        }
+
+        resizeTimer = setTimeout(() => {
+            if (document.fullscreenElement || !fullscreenActive) {
+                setZoom(zoom);
+            }
+        }, 150);
+    });
+
+    image.addEventListener('load', resetView);
+
+    image.addEventListener('error', () => {
+        imageWrap.innerHTML =
+            '<p style="padding:20px;color:#a32626">No se pudo cargar organigrama.svg. Verifica que el archivo esté en la misma carpeta que este HTML.</p>';
+    });
+
+    resetView();
+</script>
+
 </body>
 </html>
