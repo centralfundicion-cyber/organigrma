@@ -1,2 +1,0 @@
-# organigrma
-organigrama de fudición
